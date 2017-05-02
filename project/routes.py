@@ -1,6 +1,7 @@
 from apistar import Route
-from project.views import welcome
+from project.views import attempts, welcome
 
 routes = [
-    Route('/', 'GET', welcome)
+    Route('/', 'GET', welcome),
+    Route('/attempts/', 'GET', attempts)
 ]
