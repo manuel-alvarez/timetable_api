@@ -27,3 +27,7 @@ apistar run
 ```
 
 Now open a browser and go to http://localhost:8080/ url to see it working.
+
+## Heroku
+
+Project is ready to be deployed in an Heroku instance, so you'll find both `runtime.txt` and `Procfile` to be able to properly run it.
