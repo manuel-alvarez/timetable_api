@@ -17,7 +17,8 @@ def attempts(settings: Settings):
 def teachers_list(db: SQLAlchemy):
     session = db.session_class()
     teachers = session.query(Teacher).all()
-    return {"ok": True, "data": [TeacherSerializer(teacher) for teacher in teachers]}
+    data = {"results": [TeacherSerializer(teacher) for teacher in teachers], "count": len(teachers)}
+    return Response(data, status=200)
 
 
 def add_teacher(db: SQLAlchemy, name: str):
@@ -25,4 +26,5 @@ def add_teacher(db: SQLAlchemy, name: str):
     db_teacher = Teacher(name=name)
     session.add(db_teacher)
     session.flush()
-    return  {"ok": True, "data": TeacherSerializer(db_teacher)}
+    data =  {"created": TeacherSerializer(db_teacher)}
+    return Response(data, status=201)
